@@ -37,6 +37,6 @@ validate(config)
 ## ----eval = FALSE-------------------------------------------------------------
 # write_config(
 #   x = config,
-#   file = "my/config.yml"
+#   path = "my/config.yml"
 # )
 

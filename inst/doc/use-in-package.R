@@ -43,7 +43,7 @@ S7::validate(x)
 ## -----------------------------------------------------------------------------
 tmp <- tempfile(fileext = ".yml")
 x$my_config_var <- 42
-write_config(x, file = tmp)
+write_config(x, path = tmp)
 readLines(tmp)
 
 ## -----------------------------------------------------------------------------

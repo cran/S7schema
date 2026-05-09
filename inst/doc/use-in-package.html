@@ -403,10 +403,10 @@ automatically:</p>
 <span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="fu">print</span>(x)</span>
 <span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt; &lt;my_config_class&gt; List of 1</span></span>
 <span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt;  $ my_config_var: int 1</span></span>
-<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpapwPJP/Rinstdccf75252863/S7schema/examples/schema.json&quot;</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/schema.json&quot;</span></span>
 <span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt;  @ validator: &lt;S7schema::validator&gt;</span></span>
-<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0x106f16710&gt; </span></span>
-<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpapwPJP/Rinstdccf75252863/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0xaf08c5a48&gt; </span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
 </div>
 <div id="accessing-values" class="section level3">
 <h3>Accessing values</h3>
@@ -439,7 +439,7 @@ without extra code.</p>
 <p><code>write_config()</code> validates and writes to YAML:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>tmp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>(<span class="at">fileext =</span> <span class="st">&quot;.yml&quot;</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>x<span class="sc">$</span>my_config_var <span class="ot">&lt;-</span> <span class="dv">42</span></span>
-<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">write_config</span>(x, <span class="at">file =</span> tmp)</span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">write_config</span>(x, <span class="at">path =</span> tmp)</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">readLines</span>(tmp)</span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; [1] &quot;my_config_var: 42.0&quot;</span></span></code></pre></div>
 <p><code>document_schema()</code> generates markdown documentation from
