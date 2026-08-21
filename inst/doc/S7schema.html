@@ -371,7 +371,8 @@ single number:</p>
 <span id="cb2-13"><a href="#cb2-13" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
 <p>Our initial <code>config.yml</code> defines this entry to have the
 value <code>1</code>:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="fu">my_config_var</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span><span class="at"> </span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a><span class="pp">---</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a><span class="fu">my_config_var</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span></code></pre></div>
 <p>Which is obviously a valid configuration. But to check it
 programmatically we can also use the one-shot validation function
 <code>validate_yaml()</code>:</p>
@@ -387,10 +388,10 @@ as above:</p>
 <span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a><span class="fu">print</span>(config)</span>
 <span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a><span class="co">#&gt; &lt;S7schema::S7schema&gt; List of 1</span></span>
 <span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a><span class="co">#&gt;  $ my_config_var: int 1</span></span>
-<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/schema.json&quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpG4ILol/Rinst3e056f8444da/S7schema/examples/schema.json&quot;</span></span>
 <span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="co">#&gt;  @ validator: &lt;S7schema::validator&gt;</span></span>
-<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0xaeff0d150&gt; </span></span>
-<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0xa98044f90&gt; </span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpG4ILol/Rinst3e056f8444da/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
 <p>Here you can see that <code>config</code> is a S7 object, that itself
 is a <code>list</code> containing the content of
 <code>config.yml</code>. Which can be further seen by inspecting the
@@ -407,10 +408,10 @@ class:</p>
 <span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a><span class="fu">print</span>(config)</span>
 <span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="co">#&gt; &lt;S7schema::S7schema&gt; List of 1</span></span>
 <span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt;  $ my_config_var: num 2</span></span>
-<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/schema.json&quot;</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;  @ schema   : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpG4ILol/Rinst3e056f8444da/S7schema/examples/schema.json&quot;</span></span>
 <span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt;  @ validator: &lt;S7schema::validator&gt;</span></span>
-<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0xaef7ad9a0&gt; </span></span>
-<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpEbZ6Pj/Rinst1bda73b2ec54/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt;  .. @ context:Classes &#39;V8&#39;, &#39;environment&#39; &lt;environment: 0xa978b59a0&gt; </span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt;  @ file     : chr &quot;/private/var/folders/fx/71by3f551qzb5wkxt82cv15m0000gp/T/RtmpG4ILol/Rinst3e056f8444da/S7schema/examples/config.yml&quot;</span></span></code></pre></div>
 <p>Note that validation is not automatically triggered when updating a
 value, which is why it is needed to call it explicitly.</p>
 <p>This is also why we can update with an illegal entry below, but then
@@ -419,7 +420,8 @@ get an error when validating the updated object:</p>
 <span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a><span class="fu">validate</span>(config)</span>
 <span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a><span class="co">#&gt; Error in `validate_S7schema()`:</span></span>
 <span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a><span class="co">#&gt; ! /my_config_var must be number</span></span>
-<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; ✖ type: number</span></span></code></pre></div>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="co">#&gt; ✖ type: number</span></span>
+<span id="cb9-6"><a href="#cb9-6" tabindex="-1"></a><span class="co">#&gt; ℹ current value: &quot;abc&quot;</span></span></code></pre></div>
 <p>To save a configuration use <code>write_config()</code>:</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a><span class="fu">write_config</span>(</span>
 <span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>  <span class="at">x =</span> config,</span>
