@@ -36,6 +36,46 @@ test_that("S7schema can be initiated without YAML", {
     expect_error()
 })
 
+test_that("errors reference the user's call", {
+  schema <- test_path("schemas", "simple.json")
+
+  expect_snapshot(error = TRUE, {
+    S7schema(.data = list(illegal = "entry"), schema = schema)
+    S7schema(.data = list(id = "test"), schema = "missing.json")
+    S7schema(file = "missing.yml", schema = schema)
+    validate_yaml(file = "missing.yml", schema = schema)
+  })
+})
+
+test_that("non-character file paths error in the user's call", {
+  err <- expect_error(
+    S7schema(.data = list(id = "test"), schema = 1),
+    regexp = "must be a <character>"
+  )
+  expect_equal(rlang::call_name(err$call), "S7schema")
+
+  err <- expect_error(
+    S7schema(file = 1, schema = test_path("schemas", "simple.json")),
+    regexp = "must be a <character>"
+  )
+  expect_equal(rlang::call_name(err$call), "S7schema")
+})
+
+test_that("errors from S7 validation reference the user's call", {
+  schema <- test_path("schemas", "simple.json")
+  bad <- test_path("schemas", "invalid_type.json")
+  x <- S7schema(.data = list(id = "a"), schema = schema)
+  x$id <- 1
+  y <- S7schema(.data = list(id = "a"), schema = schema)
+
+  expect_snapshot(error = TRUE, {
+    validate(x)
+    write_config(x, path = withr::local_tempfile(fileext = ".yml"))
+    y@schema <- bad
+    S7::set_props(y, schema = bad)
+  })
+})
+
 test_that("validate_prop_schema() returns error for invalid input", {
   expect_match(validate_prop_schema("not_a_file.json"), "File does not exist")
 })

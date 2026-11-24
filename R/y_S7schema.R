@@ -110,9 +110,27 @@ prop_file <- S7::new_property(
   }
 )
 
+#' Innermost frame where user code enters S7 or S7schema, e.g. `validate(x)`
+#' or `@<-`. S7 calls the class validator and property getters, so
+#' `caller_env()` would point to S7 internals
+#' @noRd
+user_env <- function() {
+  is_internal <- \(n) {
+    n > 0L &&
+      environmentName(topenv(environment(sys.function(n)))) %in%
+        c("S7", "S7schema")
+  }
+  parents <- sys.parents()
+  for (i in rev(seq_along(parents))) {
+    if (is_internal(i) && !is_internal(parents[[i]])) {
+      return(sys.frame(i))
+    }
+  }
+}
+
 #' @noRd
 get_prop_validator <- function(self) {
-  validator(schema = self@schema)
+  validator(schema = self@schema, call = user_env())
 }
 
 #' @noRd
@@ -128,6 +146,14 @@ construct_S7schema <- function(file, schema, .data) {
   rlang::check_exclusive(file, .data)
 
   if (!rlang::is_missing(.data)) {
+    # Validate here so errors reference S7schema(). S7::new_object() validates
+    # the object again and cannot skip it.
+    use_validator(
+      validator = validator(schema = schema, call = environment()),
+      data = yaml_round_trip(.data),
+      call = environment()
+    )
+
     return(
       S7::new_object(
         .data,
@@ -153,7 +179,8 @@ construct_S7schema <- function(file, schema, .data) {
 validate_S7schema <- function(self) {
   use_validator(
     validator = self@validator,
-    data = yaml_round_trip(self)
+    data = yaml_round_trip(self),
+    call = user_env()
   )
 }
 

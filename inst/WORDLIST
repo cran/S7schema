@@ -1,7 +1,9 @@
 ajv
 ajv’
 Aksel
+anyof
 CMD
+combinators
 CRAN
 emph
 Evgeny
@@ -10,6 +12,7 @@ json
 jsonlite
 kable
 knitr
+licen
 lintr
 multiarch
 nocov
